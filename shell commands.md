@@ -8,9 +8,14 @@ find . -type f -exec stat -c "%y %i" {} \; \
   | head -n 1
 ```
 
-- Placeholder for Q2
+- Find the top 5 files in the current directory in terms of number of hardlinks. It is assumed(?) that all the hardlinks are in the current folder.
 
-```sh
-ls .
+```console
+find . -maxdepth 1 -type f -exec stat -c "%h %n" {} \; \
+  | sort -rn 
+  | -head n 5
+  | awk '!seen[$1]++ {print $2}'
+  | head -n 5
 ```
 
+Note: The above prints only one filename per inode. If all hardlink names are wanted, then the '!seen[$1]' part is to be removed.
