@@ -18,3 +18,9 @@ find . -maxdepth 1 -type f -exec stat -c "%h %n" {} \; \
 ```
 
 Note: The above prints only one filename per inode. If all hardlink names are wanted, then the '!seen[$1]' part is to be removed.
+
+- Given a text file, find the number of lines that contain at least one odd digit and do not contain any lowercase letter from `a` to `w`.
+
+```console
+cat filename.txt | grep [02468] | grep -v [a-w] | wc -l
+```
