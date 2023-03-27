@@ -13,7 +13,6 @@ find . -type f -exec stat -c "%y %i" {} \; \
 ```console
 find . -maxdepth 1 -type f -exec stat -c "%h %n" {} \; \
   | sort -rn \
-  | -head n 5 \
   | awk '!seen[$1]++ {print $2}' \
   | head -n 5
 ```
