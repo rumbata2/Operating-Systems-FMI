@@ -1,4 +1,4 @@
-- Print the inode of the most recently modified file (in terms of content) in the current directory or one of its subdirectories, that has more than one name. 
+1. Print the inode of the most recently modified file (in terms of content) in the current directory or one of its subdirectories, that has more than one name. 
 
 ```console
 find . -type f -exec stat -c "%y %i" {} \; \
@@ -8,7 +8,7 @@ find . -type f -exec stat -c "%y %i" {} \; \
   | head -n 1
 ```
 
-- Find the top 5 files in the current directory in terms of number of hardlinks. It is assumed(?) that all the hardlinks are in the current folder.
+2. Find the top 5 files in the current directory in terms of number of hardlinks. It is assumed(?) that all the hardlinks are in the current folder.
 
 ```console
 find . -maxdepth 1 -type f -exec stat -c "%h %n" {} \; \
@@ -19,13 +19,13 @@ find . -maxdepth 1 -type f -exec stat -c "%h %n" {} \; \
 
 Note: The above prints only one filename per inode. If all hardlink names are wanted, then the '!seen[$1]' part is to be removed.
 
-- Given a text file, find the number of lines that contain at least one odd digit and do not contain any lowercase letter from `a` to `w`.
+3. Given a text file, find the number of lines that contain at least one odd digit and do not contain any lowercase letter from `a` to `w`.
 
 ```console
 cat filename.txt | grep [02468] | grep -v [a-w] | wc -l
 ``` 
 
-- Given the text file planets.txt, output, separated by tab, the name and mass of the object, which is simultaneously:
+4. Given the text file planets.txt, output, separated by tab, the name and mass of the object, which is simultaneously:
 
 * the closest to the local star
 * of the same type as the furthest from the local star
